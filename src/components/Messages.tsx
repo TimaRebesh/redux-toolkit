@@ -4,7 +4,7 @@ import { fetchMessages, removeMessage } from "../store/reducers/messagesSlice";
 
 export default function Messages() {
 
-    const  { messages, status } = useAppSelector(state => state.messages);
+    const  { messages, status, error } = useAppSelector(state => state.messages);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -19,6 +19,9 @@ export default function Messages() {
         <div>
             {status === 'loading' &&
                 <h3>Loading...</h3>
+            }
+            {error &&
+                <h3>{error}</h3>
             }
             {messages.length > 0 && messages.map(m =>
                 <div key={m.id} className='message'>

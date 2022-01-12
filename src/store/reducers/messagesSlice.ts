@@ -9,15 +9,22 @@ type MessageState = {
 type InitState = {
     messages: MessageState[];
     status: null | string;
+    error: null | string;
 }
 
 export const fetchMessages = createAsyncThunk(
     'messages/fetchMessages',
-    async () => {
-        const response = await fetch('https://jsonplaceholder.typicode.com/comments?_page=1');
-        const data = await response.json();
-        console.log(data)
-        return data;
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await fetch('https://jsonplaceholder.typicode.com/comments?_page=1');
+            if (!response.ok) {
+                throw 'error on the server side'
+            }
+            const data = await response.json();
+            return data;
+        } catch (text) {
+            return rejectWithValue(text)
+        }
     }
 
 )
@@ -25,6 +32,7 @@ export const fetchMessages = createAsyncThunk(
 const initialState: InitState = {
     messages: [],
     status: null,
+    error: null
 }
 
 export const messagesSlice = createSlice({
@@ -46,7 +54,11 @@ export const messagesSlice = createSlice({
             .addCase(fetchMessages.fulfilled, (state, action) => {
                 state.status = 'success';
                 state.messages = action.payload;
-            });
+            })
+            .addCase(fetchMessages.rejected, (state, action) => {
+                state.status = 'rejected';
+                state.error = action.payload as string;
+            })
     },
 })
 
