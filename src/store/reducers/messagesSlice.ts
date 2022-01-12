@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 
-
 type MessageState = {
     id: number;
     body: string;
@@ -17,16 +16,26 @@ export const fetchMessages = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const response = await fetch('https://jsonplaceholder.typicode.com/comments?_page=1');
-            if (!response.ok) {
+            if (!response.ok)
                 throw 'error on the server side'
-            }
             const data = await response.json();
             return data;
         } catch (text) {
-            return rejectWithValue(text)
+            return rejectWithValue(text);
         }
     }
+)
 
+export const deleteMessage = createAsyncThunk(
+    'messages/deleteMessage',
+    async (id: number, { rejectWithValue, dispatch }) => {
+        const response = await fetch('https://jsonplaceholder.typicode.com/comments/' + id, {
+            method: 'DELETE',
+        })
+        if (response.ok) {
+            dispatch(removeMessage(id));
+        }
+    }
 )
 
 const initialState: InitState = {

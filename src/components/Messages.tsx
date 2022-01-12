@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { fetchMessages, removeMessage } from "../store/reducers/messagesSlice";
+import { deleteMessage, fetchMessages } from "../store/reducers/messagesSlice";
 
 export default function Messages() {
 
@@ -12,7 +12,7 @@ export default function Messages() {
     }, [])
 
     const remove = (id: number) => {
-        dispatch(removeMessage(id))
+        dispatch(deleteMessage(id))
     }
 
     return (
