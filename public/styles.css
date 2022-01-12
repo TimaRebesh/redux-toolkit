@@ -1,0 +1,15 @@
+.message {
+    margin: 10px;
+}
+
+.date {
+    color: rgb(13, 171, 219);
+    font-size: 11px;
+    margin-right: 10px;
+}
+
+.remove {
+    margin-left: 15px;
+    color: red;
+    cursor: pointer;
+}
