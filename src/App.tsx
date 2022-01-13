@@ -1,5 +1,4 @@
 import './App.css';
-import InputText from './components/InputText';
 import Messages from './components/Messages';
 import TabBar from './components/TabBar';
 import { useAppSelector } from './hooks/redux';
@@ -10,9 +9,9 @@ function App() {
 
   const getContent = () => {
     if (tabNumber === 1)
-      return null
-    if (tabNumber === 2)
       return <Messages />
+    if (tabNumber === 2)
+      return null
   }
 
   return (

@@ -7,8 +7,8 @@ export default function TabBar() {
     const dispatch = useAppDispatch();
     
     const tabs = [
-        { id: 1, text: 'ToDo' },
-        { id: 2, text: 'Comments' },
+        { id: 1, text: 'Comments' },
+        { id: 2, text: 'ToDo' },
     ]
 
     return (

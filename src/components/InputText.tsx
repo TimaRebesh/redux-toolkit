@@ -1,8 +1,9 @@
+import { AsyncThunkAction } from "@reduxjs/toolkit/dist/createAsyncThunk";
 import { useState } from "react"
 import { useAppDispatch } from "../hooks/redux";
 
 interface InputTextProps {
-    action: (v: string) => { payload: string; type: string; }
+    action: (v: string) => AsyncThunkAction<void, string, {}>
 }
 
 export default function InputText(props : InputTextProps) {

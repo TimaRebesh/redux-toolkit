@@ -32,3 +32,12 @@
     background-color: rgb(69, 174, 200);
     color: white;
 }
+
+.preloader {
+    display: flex;
+}
+
+.preloader-content {
+    position: absolute;
+    margin: 10% 48%;
+}
