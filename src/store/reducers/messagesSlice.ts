@@ -35,7 +35,7 @@ export const createNewMessage = createAsyncThunk(
             const response = await fetch('https://jsonplaceholder.typicode.com/comments/', {
                 method: 'POST',
                 headers: {
-                    'Content-type': 'aplication/json'
+                    'Content-Type': 'aplication/json'
                 },
                 body: JSON.stringify(newMes)
             })
