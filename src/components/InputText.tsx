@@ -1,15 +1,18 @@
 import { useState } from "react"
 import { useAppDispatch } from "../hooks/redux";
-import { newMessage } from "../store/reducers/messagesSlice";
 
-export default function InputText() {
+interface InputTextProps {
+    action: (v: string) => { payload: string; type: string; }
+}
+
+export default function InputText(props : InputTextProps) {
 
 	const dispatch = useAppDispatch();
     const [text, setText] = useState('');
 
     const sendMessage = () => {
         if (text) {
-            dispatch(newMessage(text))
+            dispatch(props.action(text))
             setText('');
         }
     }

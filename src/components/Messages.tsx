@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { deleteMessage, fetchMessages } from "../store/reducers/messagesSlice";
+import InputText from "./InputText";
+import { newMessage } from "../store/reducers/messagesSlice";
 
 export default function Messages() {
 
@@ -17,6 +19,7 @@ export default function Messages() {
 
     return (
         <div>
+            <InputText action={newMessage} />
             {status === 'loading' &&
                 <h3>Loading...</h3>
             }

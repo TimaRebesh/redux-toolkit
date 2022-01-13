@@ -13,3 +13,22 @@
     color: red;
     cursor: pointer;
 }
+
+.tab-bar {
+    display: flex;
+}
+
+.tab {
+    width: 100%;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.tab-content {
+    text-align: center;
+}
+
+.selected {
+    background-color: rgb(69, 174, 200);
+    color: white;
+}
